@@ -31,7 +31,8 @@ def show_id(id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    # form = LoginForm()
+    form = LoginForm(request.form)
     if form.validate_on_submit():
         flash('Login requested for OpenID="' + form.openid.data + '", remember_me=' + str(form.remember_me.data))
         return redirect("/index")
@@ -40,7 +41,7 @@ def login():
     if request.method == 'POST':
         return "post"
     else:
-        return render_template("login.html",title="login title",form = form)
+        return render_template("login.html",title="login title",form = form,providers = app.config['OPENID_PROVIDERS'])
 
 
 # if __name__ == "__main__":
