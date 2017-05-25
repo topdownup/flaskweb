@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<H1>你好，{{user.name}}</H1>
+<br/>
+<H1>{{user.age}}</H1>
+{% for post in posts %}
+<H5>{{post.author.nickname}} say: {{post.say}}</H5>
+{% endfor %}
+{% endblock %}
